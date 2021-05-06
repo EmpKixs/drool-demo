@@ -1,0 +1,57 @@
+package com.kixs.drool.greeting
+
+import com.kixs.drool.message.Message;
+
+global org.slf4j.Logger log;
+
+rule "hello"
+    ruleflow-group "hello"
+    salience 10
+    when
+        $m : Message(status == 0 && greeted == false)
+    then
+        log.info("Hello " + $m.getMessage());
+        // System.out.println("Hello " + $m.getMessage());
+        $m.setMessage("Hello " + $m.getMessage());
+        $m.setGreeted(true);
+        update($m);
+end
+
+rule "hello2"
+    ruleflow-group "hello"
+    salience 10
+    when
+        $m : Message(status == 0 && greeted == true)
+    then
+        log.info("How are you? " + $m.getMessage());
+        // System.out.println("Hello " + $m.getMessage());
+        $m.setMessage("How are you? " + $m.getMessage());
+        $m.setGreeted(true);
+        update($m);
+end
+
+rule "goodbye"
+    salience 5
+    ruleflow-group "goodbye"
+    when
+        $m : Message(status == 1 && goodbyed == false)
+    then
+        log.info("GoodBye " + $m.getMessage());
+        // System.out.println("GoodBye " + $m.getMessage());
+        $m.setMessage("GoodBye " + $m.getMessage());
+        $m.setGoodbyed(true);
+        update($m);
+end
+
+rule "goodbye2"
+    salience 5
+    ruleflow-group "goodbye"
+    when
+        $m : Message(status == 1 && goodbyed == true)
+    then
+        log.info("See you again. " + $m.getMessage());
+        // System.out.println("GoodBye " + $m.getMessage());
+        $m.setMessage("See you again. " + $m.getMessage());
+        $m.setGoodbyed(true);
+        update($m);
+end

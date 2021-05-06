@@ -1,0 +1,29 @@
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="greetingKB" packages="com.kixs.drool.greeting">
+        <ksession name="greetingKS"/>
+    </kbase>
+
+    <kbase name="timeKB" packages="com.kixs.drool.rules.time">
+        <ksession name="timeKS"/>
+    </kbase>
+
+    <kbase name="optionalKB" packages="rules.optional">
+        <ksession name="optionalKS"/>
+    </kbase>
+
+    <kbase name="comboKB" packages="rules.combo">
+        <ksession name="comboKS"/>
+    </kbase>
+
+    <kbase name="discountKB" packages="rules.discount">
+        <ksession name="discountKS"/>
+    </kbase>
+
+    <kbase name="limitationKB" packages="rules.limitation">
+        <ksession name="limitationKS"/>
+    </kbase>
+
+    <kbase name="quotaKB" packages="rules.quota">
+        <ksession name="quotaKS"/>
+    </kbase>
+</kmodule>

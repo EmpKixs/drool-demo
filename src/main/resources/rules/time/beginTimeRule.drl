@@ -1,0 +1,24 @@
+package com.kixs.drool.rules.time
+
+import com.kixs.drool.param.TimeRuleParam;
+
+// 立即开始
+rule "beginTimeRuleNow"
+    ruleflow-group "beginTimeRule"
+    when
+        $param : TimeRuleParam(beginTimeWay == 1)
+    then
+        System.out.println("立即开始");
+
+end
+
+// 指定日期时间开始
+rule "beginTimeRuleAssign"
+    ruleflow-group "beginTimeRule"
+    when
+        $param : TimeRuleParam(beginTimeWay == 2)
+    then
+        System.out.println("指定日期时间开始：" + $param.getBeginTimeWayParam());
+
+end
+
